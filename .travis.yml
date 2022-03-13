@@ -10,17 +10,17 @@ script:
   - docker run -e CI=true dockerifont21/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t dockerifont21/multi-client ./client
   - docker build -t dockerifont21/multi-nginx ./nginx
+  - docker build -t dockerifont21/multi-client ./client
   - docker build -t dockerifont21/multi-server ./server
   - docker build -t dockerifont21/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push dockerifont21/multi-nginx
   - docker push dockerifont21/multi-client
-  - docker push dockerifont21/multi-server
-  - docker push dockerifont21/multi-worker
+  # - docker push dockerifont21/multi-nginx
+  # - docker push dockerifont21/multi-server
+  # - docker push dockerifont21/multi-worker
 
 # deploy:
 #   provider: elasticbeanstalk
