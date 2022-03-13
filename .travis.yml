@@ -18,9 +18,9 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
   - docker push dockerifont21/multi-client
-  # - docker push dockerifont21/multi-nginx
-  # - docker push dockerifont21/multi-server
-  # - docker push dockerifont21/multi-worker
+  - docker push dockerifont21/multi-nginx
+  - docker push dockerifont21/multi-server
+  - docker push dockerifont21/multi-worker
 
 # deploy:
 #   provider: elasticbeanstalk
